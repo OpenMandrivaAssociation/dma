@@ -4,7 +4,7 @@
 
 %define sendmail_command %{_sbindir}/%{name}
 
-Summary:	dma is an end-system mail server and supports queueing and local & remote mail delivery via SMTP and SSL/TLS.
+Summary:	dma is an end-system mail server and supports queueing and local & remote mail delivery via SMTP and SSL/TLS
 Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %{release}
