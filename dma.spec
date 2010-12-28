@@ -1,6 +1,6 @@
 %define	name		dma
 %define	version		0.2
-%define	release		1
+%define	release		2
 
 %define sendmail_command %{_sbindir}/%{name}
 
