@@ -1,10 +1,10 @@
 %define	name		dma
-%define	version		0.2
-%define	release		2
+%define	version		0.3
+%define	release		1
 
 %define sendmail_command %{_sbindir}/%{name}
 
-Summary:	dma is an end-system mail server and supports queueing and local & remote mail delivery via SMTP and SSL/TLS
+Summary:	An end-system mail server
 Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %{release}
@@ -60,7 +60,7 @@ It features:
 %patch1
 
 %build
-%make CFLAGS="%optflags -DDMA_VERSION='\"%{version}\"' -DLIBEXEC_PATH='\"%{_libdir}\"'" LIBEXEC=%{_libdir} PREFIX=%{_prefix}
+%make CFLAGS="%{optflags} -DDMA_VERSION='\"%{version}\"' -DLIBEXEC_PATH='\"%{_libdir}\"'" LIBEXEC=%{_libdir} PREFIX=%{_prefix}
 
 %install
 %__rm -rf %{buildroot}
