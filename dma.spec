@@ -1,5 +1,5 @@
 %define	name		dma
-%define	version		0.3
+%define	version		0.5
 %define	release		1
 
 %define sendmail_command %{_sbindir}/%{name}
@@ -10,7 +10,7 @@ Version:	%{version}
 Release:	%mkrel %{release}
 License:	BSD
 URL:		http://gitorious.org/dma
-Group:		Networking/Mail 
+Group:		Networking/Mail
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	openssl-devel
@@ -22,11 +22,11 @@ Provides:	sendmail-command
 # pushd dma
 # git archive --prefix=dma-X.Y/ -o ../dma-X.Y.tar commit_id
 # popd 
-# bzip2 dma-X.Y.tar
-Source0:	dma-%{version}.tar.bz2	
+# xz -z -e dma-X.Y.tar
+Source0:	dma-%{version}.tar.xz
 Source1:	dma-aliases
 Source2:	README.urpmi
-Patch0:		dma-0.2-mdv-fix-build-in-rpm-env.patch
+Patch0:		dma-0.5-mdv-fix-build-in-rpm-env.patch
 Patch1:		dma-0.2-mdv-locate-aliases-in-dma-etc-subdir.patch
 
 %description
@@ -43,7 +43,7 @@ It features:
 
 %files
 %defattr(-,root,root)
-%doc TODO README VERSION README.urpmi
+%doc TODO README.markdown VERSION README.urpmi
 %attr(2755, root, mail)%{_sbindir}/%{name}
 %attr(4750, root, mail)%{_libdir}/dma-mbox-create
 %{_mandir}/man8/%{name}.8.*
@@ -60,11 +60,16 @@ It features:
 %patch1
 
 %build
-%make CFLAGS="%{optflags} -DDMA_VERSION='\"%{version}\"' -DLIBEXEC_PATH='\"%{_libdir}\"'" LIBEXEC=%{_libdir} PREFIX=%{_prefix}
+%make -j1 CFLAGS="%{optflags} \
+	-DDMA_VERSION='\"%{version}\"' \
+	-DLIBEXEC_PATH='\"%{_libdir}\"' \
+	-DCONF_PATH='\"/etc/dma\"'" \
+	LIBEXEC=%{_libdir} \
+	PREFIX=%{_prefix}
 
 %install
 %__rm -rf %{buildroot}
-%makeinstall DESTDIR=%{buildroot} LIBEXEC=%{_libdir} PREFIX=%{_prefix} 
+%makeinstall DESTDIR=%{buildroot} LIBEXEC=%{_libdir} PREFIX=%{_prefix}
 
 %__install -d %{buildroot}/%{_sysconfdir}/%{name}
 %__cp auth.conf %{buildroot}/%{_sysconfdir}/%{name}/auth.conf
