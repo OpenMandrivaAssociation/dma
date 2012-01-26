@@ -1,15 +1,11 @@
-%define	name		dma
-%define	version		0.6
-%define	release		1
-
 %define sendmail_command %{_sbindir}/%{name}
 
 Summary:	An end-system mail server
-Name:		%{name}
-Version:	%{version}
-Release:	%mkrel %{release}
+Name:		dma
+Version:	0.7
+Release:	%mkrel 1
 License:	BSD
-URL:		http://gitorious.org/dma
+URL:		https://github.com/corecode/dma
 Group:		Networking/Mail
 BuildRequires:	flex
 BuildRequires:	bison
@@ -18,10 +14,10 @@ BuildRequires:	openssl-devel
 Provides:	sendmail-command
 
 # The source was obtained from upstream git repository:
-# git clone git://gitorious.org/dma/dma.git
+# git clone git://github.com/corecode/dma.git
 # pushd dma
 # git archive --prefix=dma-X.Y/ -o ../dma-X.Y.tar commit_id
-# popd 
+# popd
 # xz -z -e dma-X.Y.tar
 Source0:	dma-%{version}.tar.xz
 Source1:	dma-aliases
