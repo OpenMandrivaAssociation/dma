@@ -1,0 +1,23 @@
+#
+# Description: Remove group & chmod during install phase
+# Forwarded: no
+# Bug: no
+# Author: Mjules <mjules AT free DOT fr>
+#
+
+--- Makefile.orig	2011-11-16 13:35:22.000000000 +0100
++++ Makefile	2011-11-23 20:53:19.874346091 +0100
+@@ -48,9 +48,10 @@
+ install: all
+ 	${INSTALL} -d ${DESTDIR}${SBIN}
+ 	${INSTALL} -d ${DESTDIR}${MAN}/man8 ${DESTDIR}${LIBEXEC}
+-	${INSTALL} -m 2755 -o root -g mail dma ${DESTDIR}${SBIN}
+-	${INSTALL} -m 4754 -o root -g mail dma-mbox-create ${DESTDIR}${LIBEXEC}
+-	${INSTALL} -m 0644 dma.8 ${DESTDIR}${MAN}/man8/
++	${INSTALL} dma ${DESTDIR}${SBIN}
++	${INSTALL} dma-mbox-create ${DESTDIR}${LIBEXEC}
++	${INSTALL} dma.8 ${DESTDIR}${MAN}/man8/
++	${INSTALL} -d ${DESTDIR}${DMASPOOL}
+ 
+ sendmail-link:
+ 	cd ${DESTDIR}${SBIN} && ${LN} ${SYMLINK} dma sendmail
