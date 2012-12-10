@@ -83,3 +83,27 @@ It features:
 if [ ! -e %{sendmail_command} ]; then 
       /usr/sbin/update-alternatives --remove sendmail-command %{_sendmail_command}
 fi
+
+
+%changelog
+* Thu Jan 26 2012 Andrey Bondrov <abondrov@mandriva.org> 0.7-1
++ Revision: 769128
+- New version 0.7, new URL
+
+* Wed Dec 21 2011 Andrey Bondrov <abondrov@mandriva.org> 0.6-1
++ Revision: 744079
+- New version 0.6
+
+* Mon Dec 05 2011 Andrey Bondrov <abondrov@mandriva.org> 0.5-1
++ Revision: 737843
+- New version 0.5, rediff patch0
+
+* Thu Oct 06 2011 Andrey Bondrov <abondrov@mandriva.org> 0.3-1
++ Revision: 703297
+- New version: 0.3
+
+* Tue Dec 28 2010 John Balcaen <mikala@mandriva.org> 0.2-2mdv2011.0
++ Revision: 625599
+- Bump release
+- import dma
+
