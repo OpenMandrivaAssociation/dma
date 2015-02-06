@@ -3,7 +3,7 @@
 Summary:	An end-system mail server
 Name:		dma
 Version:	0.7
-Release:	%mkrel 1
+Release:	2
 License:	BSD
 URL:		https://github.com/corecode/dma
 Group:		Networking/Mail
