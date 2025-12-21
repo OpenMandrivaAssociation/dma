@@ -7,6 +7,7 @@ Release:	2
 License:	BSD
 URL:		https://github.com/corecode/dma
 Group:		Networking/Mail
+BuildRequires:	make
 BuildRequires:	flex
 BuildRequires:	bison
 BuildRequires:	openssl-devel
